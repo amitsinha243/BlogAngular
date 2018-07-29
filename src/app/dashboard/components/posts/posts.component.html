@@ -1,0 +1,37 @@
+
+<div class="mt-2"></div>
+<mat-progress-spinner *ngIf="post === undefined"
+color="accent"
+mode="indeterminate">
+</mat-progress-spinner>
+<mat-card *ngIf="post != undefined">
+  <mat-card-title>{{ post.title }}</mat-card-title>
+  <mat-card-subtitle></mat-card-subtitle>
+  <mat-card-content>
+    {{ post.body }}
+    <br>
+    <br>
+    <mat-icon>thumb_up</mat-icon>
+    <mat-icon class="pl-2" (click)="showCommentArea()">comment</mat-icon>
+    <div *ngIf="showComment">
+      <form class="example-form">
+        <mat-form-field class="example-full-width" color="accent">
+          <textarea matInput placeholder="Leave a comment"></textarea>
+          <button mat-mini-fab matSuffix color="warn" class="style-icon">
+            <mat-icon >send</mat-icon>
+          </button>
+          
+        </mat-form-field>
+
+      </form>
+    </div>
+  </mat-card-content>
+  <mat-card *ngFor="let comment of comments" class="mt-1">
+    <mat-card-subtitle>{{ comment.name }}</mat-card-subtitle>
+  <mat-card-content>{{ comment.body }}</mat-card-content>
+  <mat-card-actions class="ml-1">
+    <mat-icon>thumb_up</mat-icon>
+    <mat-icon class="pl-2">thumb_down</mat-icon>
+  </mat-card-actions>
+  </mat-card>
+</mat-card>
